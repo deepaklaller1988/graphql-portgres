@@ -20,6 +20,4 @@ export class User extends BaseEntity {
   @Field(() => Number,{nullable:true})
   @Column({ nullable: true })
   rating: number;
-
-
 }

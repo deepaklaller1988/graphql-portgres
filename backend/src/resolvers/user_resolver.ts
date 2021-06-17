@@ -6,6 +6,10 @@ import { CreateUserInput } from '../inputs/create_user_input';
 @Resolver()
 export class UserResolver {
 
+ isInt(n:number) {
+    return n % 1 === 0;
+ }
+
   @Query(() => [User])
   users() {
     return User.find();
@@ -18,13 +22,18 @@ export class UserResolver {
 
   @Mutation(() => User)
   async createUserVegetable(@Arg("data") data: CreateUserInput) {
-    if(data.rating >=1 && data.rating <=5)
+    if(this.isInt(data.rating) == true)
     {
-      const user = User.create(data);
-      await user.save();
-      return user;
+      if(data.rating >=1 && data.rating <=5)
+      {
+        const user = User.create(data);
+        await user.save();
+        return user;
+      }
+      else 
+        return false;
     }
-    else 
-      return false;
-  }
+    else
+        return false; 
+    }
 }

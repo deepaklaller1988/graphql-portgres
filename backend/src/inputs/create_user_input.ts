@@ -1,4 +1,5 @@
-import { InputType, Field } from 'type-graphql';
+import { InputType, Field, Int } from 'type-graphql';
+import { Column } from 'typeorm';
 
 
 @InputType()
@@ -10,6 +11,7 @@ export class CreateUserInput {
   name: string;
 
   @Field(() => Number)
+  @Column({ nullable: true, type :Int })
  rating: number;
 
 }
