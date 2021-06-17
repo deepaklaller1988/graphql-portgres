@@ -18,7 +18,7 @@ export class UserResolver {
 
   @Mutation(() => User)
   async createUserVegetable(@Arg("data") data: CreateUserInput) {
-    if(data.rating >="1" && data.rating <="5")
+    if(data.rating >=1 && data.rating <=5)
     {
       const user = User.create(data);
       await user.save();

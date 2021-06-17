@@ -1,5 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, IsNull } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, IsNull, Any } from 'typeorm';
+import { ObjectType, Field, ID, Int, Float } from 'type-graphql';
 import { EncryptionTransformer } from 'typeorm-encrypted';
 import {Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max} from "class-validator";
 
@@ -19,9 +19,9 @@ export class User extends BaseEntity {
   @Column({ nullable: true})
   name: string;
 
-  @Field(() => String,{nullable:true})
+  @Field(() => Number,{nullable:true})
   @Column({ nullable: true })
-  rating: string;
+  rating: number;
 
 
 }

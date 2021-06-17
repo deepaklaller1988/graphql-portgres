@@ -9,7 +9,7 @@ export class CreateUserInput {
   @Field()
   name: string;
 
-  @Field()
- rating: string;
+  @Field(() => Number)
+ rating: number;
 
 }
